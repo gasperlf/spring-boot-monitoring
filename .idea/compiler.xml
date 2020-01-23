@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="api-finance-service-r" />
+        <module name="api-finance-service" />
+        <module name="api-finance" />
+        <module name="api-finance-service-reactive" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="api-finance" target="11" />
+      <module name="api-finance-service" target="11" />
+      <module name="api-finance-service-r" target="11" />
+      <module name="api-finance-service-reactive" target="11" />
+      <module name="spring-boot-monitoring" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api-finance" options="-parameters" />
+      <module name="api-finance-service" options="-parameters" />
+      <module name="api-finance-service-r" options="-parameters" />
+      <module name="api-finance-service-reactive" options="-parameters" />
+    </option>
+  </component>
+</project>

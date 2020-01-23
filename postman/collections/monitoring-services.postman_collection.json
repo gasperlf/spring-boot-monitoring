@@ -1,0 +1,55 @@
+{
+	"info": {
+		"_postman_id": "cfc7ed35-0cfb-4566-982c-0307a1cb8129",
+		"name": "monitoring-services",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api-finance-service-reactive",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/stockWithHistorical/GOOG",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"stockWithHistorical",
+						"GOOG"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api-finance-service",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/stockWithHistorical?nameCompany=GOOG",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stockWithHistorical"
+					],
+					"query": [
+						{
+							"key": "nameCompany",
+							"value": "GOOG"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

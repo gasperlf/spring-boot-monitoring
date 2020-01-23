@@ -1,0 +1,57 @@
+version: "3"
+services:
+  monitoring-prometheus-service:
+    build:
+      context: ./prometheus
+      args:
+        - config.file=/etc/prometheus/prometheus.yml
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    container_name: monitoring-prometheus-service
+    image: gasperlf/monitoring-prometheus-service
+    ports:
+      - "9090:9090"
+    networks:
+      - my-network-services
+
+  monitoring-grafana-service:
+    build:
+      context: ./grafana
+    container_name: monitoring-grafana-service
+    image: gasperlf/monitoring-grafana-service
+    ports:
+      - "3000:3000"
+    networks:
+      -  my-network-services
+    depends_on:
+      - monitoring-prometheus-service
+
+  api-finance-service:
+    build:
+      context: ./api-finance-service
+    container_name: api-finance-service
+    image: gasperlf/api-finance-service:0.0.1-SNAPSHOT
+    ports:
+      - "8080:8080"
+    networks:
+      - my-network-services
+    depends_on:
+      - monitoring-prometheus-service
+
+  api-finance-service-reactive:
+    build:
+      context: ./api-finance-service-reactive
+    container_name: api-finance-service-reactive
+    image: gasperlf/api-finance-service-reactive:0.0.1-SNAPSHOT
+    ports:
+      - "8081:8081"
+    networks:
+      - my-network-services
+    depends_on:
+      - monitoring-prometheus-service
+
+networks:
+    my-network-services:
+      driver: bridge
+
+# docker-compose up -d/--no-start
